@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Searchbar, Sidebar, TopPlay } from './components';
+import { Discover, TopArtists } from './pages';
+
+const App = () => {
+  console.log('first');
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <div className="relative flex">
+      <Sidebar />
+      <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
+        <Searchbar />
 
-export default App
+        <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
+          <div className="flex-1 h-fit pb-40">
+            <Routes>
+              <Route path="/" element={<Discover />} />
+              <Route path="/top-artists" element={<TopArtists />} />
+            </Routes>
+          </div>
+          <div className="xl:sticky relative top-0 h-fit">
+            <TopPlay />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
