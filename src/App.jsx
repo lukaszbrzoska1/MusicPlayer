@@ -1,10 +1,11 @@
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
-import { Searchbar, Sidebar, TopPlay } from './components';
+import { Searchbar, Sidebar, TopPlay, MusicPlayer } from './components';
 import { Discover, TopArtists } from './pages';
 
 const App = () => {
-  console.log('first');
+  const { activeSong } = useSelector((state) => state.player);
 
   return (
     <div className="relative flex">
@@ -24,6 +25,11 @@ const App = () => {
           </div>
         </div>
       </div>
+      {activeSong?.title && (
+        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10" >
+          <MusicPlayer />
+        </div>
+      )}
     </div>
   );
 };
