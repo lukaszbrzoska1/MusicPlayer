@@ -23,7 +23,6 @@ const playerSlice = createSlice({
       } else {
         state.currentSongs = action.payload.data;
       }
-      state.currentSongs = action.payload.data;
 
       state.currentIndex = action.payload.i;
       state.isActive = true;

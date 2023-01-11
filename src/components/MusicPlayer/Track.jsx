@@ -1,9 +1,9 @@
 const Track = ({ isPlaying, isActive, activeSong }) => (
-  <div className="flex flex-1 items-center justify-center">
+  <div className="flex flex-1 items-center justify-start">
     <div className={`${isPlaying && isActive ? 'animate-[spin_6s_linear_infinite]' : ''} hidden sm:block h-16 w-16 mr-4`}>
       <img src={activeSong?.images?.coverart} alt="cover art" className="rounded-full" />
     </div>
-    <div className="w-[50%]">
+    <div className="w-[50%] flex-1">
       <p className="truncate text-white font-bold text-lg">
         {activeSong?.title ? activeSong?.title : 'No active Song'}
       </p>
