@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 const TopChartCard = ({ song, i, activeSong, isPlaying, handlePauseClick, handlePlayClick }) => (
-  <div className="w-full flex flex-row items-center hover:bg-[$4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
+  <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
     <h3 className="text-base text-white mr-3 font-bold">{i + 1}</h3>
     <div className="flex flex-row flex-1 justify-between items-center">
       <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg" />
@@ -80,7 +80,7 @@ const TopPlay = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col mt-8">
+      <div className="w-full flex flex-col my-10 gap-6">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Artists</h2>
           <Link to="/top-artists">
@@ -100,7 +100,7 @@ const TopPlay = () => {
           {topPlays?.slice(0, 5).map((artist) => (
             <SwiperSlide
               key={artist?.key}
-              style={{ width: '25%', height: 'auto' }}
+              style={{ width: '20%', height: 'auto' }}
               className="shadow-lg rounded-full animate-slideright"
             >
               <Link to={`/artists/${artist?.artists[0].adamid}`}>
