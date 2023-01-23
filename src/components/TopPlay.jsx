@@ -92,12 +92,10 @@ const TopPlay = () => {
           slidesPerView="auto"
           spaceBetween={15}
           freeMode
-          centeredSlides
-          centeredSlidesBounds
           modules={[FreeMode]}
           className="mt-4"
         >
-          {topPlays?.slice(0, 5).map((artist) => (
+          {topPlays?.map((artist) => (
             <SwiperSlide
               key={artist?.key}
               style={{ width: '20%', height: 'auto' }}
